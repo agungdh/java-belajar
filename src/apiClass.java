@@ -5,6 +5,7 @@ import okhttp3.Headers;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.json.JSONObject;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -36,7 +37,17 @@ public class apiClass {
 
 //      JOptionPane.showMessageDialog(null, header);
 
-      System.out.println(response.body().string());
+//      System.out.println(response.body().string());
+
+        JSONObject json = new JSONObject(response.body().string());
+//        System.out.println("\n\n");
+        
+//        System.out.println(json.toMap());
+
+        for (String key : json.toMap().keySet()) {
+            System.out.println(key + " = " + json.toMap().get(key));
+        }
+//        System.out.println(json.toMap());
     }
   }
 }
