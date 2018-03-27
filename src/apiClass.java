@@ -20,7 +20,7 @@ import org.json.JSONObject;
 public class apiClass {
     private final OkHttpClient client = new OkHttpClient();
 
-    public void run() throws Exception {
+    public String run() throws Exception {
     Request request = new Request.Builder()
         .url("https://ipinfo.io/json")
         .build();
@@ -31,7 +31,7 @@ public class apiClass {
       Headers responseHeaders = response.headers();
 //      String header = "";
       for (int i = 0; i < responseHeaders.size(); i++) {
-        System.out.println(responseHeaders.name(i) + ": " + responseHeaders.value(i));
+//        System.out.println(responseHeaders.name(i) + ": " + responseHeaders.value(i));
 //          header += responseHeaders.name(i) + ": " + responseHeaders.value(i) + "\n";
       }
 
@@ -43,10 +43,12 @@ public class apiClass {
 //        System.out.println("\n\n");
         
 //        System.out.println(json.toMap());
-
+        String nilai = "";
         for (String key : json.toMap().keySet()) {
-            System.out.println(key + " = " + json.toMap().get(key));
+            nilai += key + " = " + json.toMap().get(key) + "\n";
         }
+        
+        return nilai;
 //        System.out.println(json.toMap());
     }
   }
