@@ -123,7 +123,7 @@ public class main extends javax.swing.JFrame {
         });
         
         apiClass api = new apiClass();
-        api.run();
+        System.out.print(api.run());
     }
     
 
