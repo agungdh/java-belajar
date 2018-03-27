@@ -39,16 +39,8 @@ public class apiClass {
 
 //      System.out.println(response.body().string());
 
-        JSONObject json = new JSONObject(response.body().string());
-//        System.out.println("\n\n");
         
-//        System.out.println(json.toMap());
-        String nilai = "";
-        for (String key : json.toMap().keySet()) {
-            nilai += key + " = " + json.toMap().get(key) + "\n";
-        }
-        
-        return nilai;
+        return response.body().string();
 //        System.out.println(json.toMap());
     }
   }
