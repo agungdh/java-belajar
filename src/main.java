@@ -1,3 +1,6 @@
+
+import org.json.JSONObject;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,6 +18,19 @@ public class main extends javax.swing.JFrame {
      */
     public main() {
         initComponents();
+        
+        apiClass api = new apiClass();
+        try {
+            JSONObject json = new JSONObject(api.run());
+            String nilai = "";
+            for (String key : json.toMap().keySet()) {
+                nilai += key + " = " + json.toMap().get(key) + "\n";
+            }
+            
+            jTextArea1.setText(nilai);            
+        } catch (Exception e) {
+            System.out.print(e.getMessage());
+        }
     }
 
     /**
@@ -41,7 +57,6 @@ public class main extends javax.swing.JFrame {
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("hai");
         jScrollPane1.setViewportView(jTextArea1);
 
         jLabel1.setFont(new java.awt.Font("DejaVu Sans Mono", 1, 48)); // NOI18N
@@ -122,11 +137,9 @@ public class main extends javax.swing.JFrame {
             }
         });
         
-        apiClass api = new apiClass();
-        System.out.print(api.run());
     }
     
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
